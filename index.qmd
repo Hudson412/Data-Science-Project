@@ -1,11 +1,22 @@
 ---
-title: "Project 1"
+title: "Project 1: Website"
 ---
 
-This is a Quarto website.
+Welcome to my website! Here are a few links with more information about myself.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+---
+title: "Hudson's Website"
+image: headshot.jpeg
+toc: false
+about: 
+  template: jolla
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/hudsoncolletti/
+    - text: GitHub
+      href: https://github.com/Hudson412
+    - text: Email
+      href: mailto:hpch2023@mymail.pomona.edu
+---
 
-```{r}
-1 + 1
-```
+Hi! I am a sophomore at Pomona College studying Math and Economics with a Minor in Data Science. Growing up in Pittsburgh, PA, I found the transition to living in California difficult at first but now love it. Professionally, I am currently pursuing a career in Investment Banking or Private Equity. Outside of professional and academic interests, I am currently training for an Ironman, love golfing, and enjoy playing poker in my free time.

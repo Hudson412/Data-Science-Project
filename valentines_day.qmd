@@ -1,0 +1,37 @@
+---
+title: "Valentines Day"
+description: |
+  Analysis of Valentines Day data from TidyTuesday
+author: Hudson Colletti
+date: February 16, 2025
+format: html
+execute: 
+  warning: false
+  message: false
+---
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library(tidyverse)
+```
+
+```{r, echo = FALSE}
+library("tidytuesdayR")
+library("ggplot2")
+
+tuesdata <- tidytuesdayR::tt_load(2024, week = 7)
+
+historical_spending <- tuesdata$historical_spending
+gifts_age <- tuesdata$gifts_age
+gifts_gender <- tuesdata$gifts_gender
+
+```
+
+```{r, echo = FALSE}
+ggplot(historical_spending, aes(x = PercentCelebrating, y = PerPerson)) + 
+  geom_point() + 
+  labs(
+    x = "Percent Celebrating in a Given Year",
+    y = "Average Amount Spent Per Person",
+    title = "Average Amount Spent for Valentine's Day vs Percent Celebrating"
+  )
+```

@@ -1,16 +1,19 @@
 project:
   type: website
   output-dir: docs
-
+  
 website:
-  title: "Hudson Colletti"
+  title: "Project 1"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - resources.qmd
-
+      - text: "Data Viz"
+        menu: 
+          - text: "Valentine's Day"
+            href: valentines_day.qmd
+          
+      
 
 format:
   html:
