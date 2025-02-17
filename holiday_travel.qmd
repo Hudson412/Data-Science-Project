@@ -1,0 +1,39 @@
+---
+title: "Holiday Travel"
+---
+
+---
+description: |
+  Analysis of Global Holiday Travel data from TidyTuesday
+author: Hudson Colletti
+date: February 16, 2025
+format: html
+execute: 
+  warning: false
+  message: false
+---
+
+```{r message = FALSE, warning = FALSE, echo = FALSE}
+library(tidyverse)
+```
+
+```{r, echo = FALSE}
+library("tidytuesdayR")
+library("ggplot2")
+
+tuesdata <- tidytuesdayR::tt_load('2024-12-24')
+
+global_holidays <- tuesdata$global_holidays
+monthly_passengers <- tuesdata$monthly_passengers
+```
+
+```{r, echo = FALSE}
+ggplot(monthly_passengers, aes(x = Month)) +
+  geom_point(aes(y = Domestic, color = "Domestic"), size = 3) +  # Domestic passengers (blue dots)
+  geom_point(aes(y = International, color = "International"), size = 3) +  # International (red dots)
+  labs(title = "Monthly Air Passengers",
+       x = "Month",
+       y = "Passengers (in thousands)",
+       color = "Flight Type")
+
+```
