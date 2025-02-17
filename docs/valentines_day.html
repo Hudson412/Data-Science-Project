@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hudson Colletti">
-<meta name="dcterms.date" content="2025-02-16">
+<meta name="dcterms.date" content="2025-02-17">
 <meta name="description" content="Analysis of Valentines Day data from TidyTuesday">
 
 <title>Project 1 - Valentines Day</title>
@@ -104,6 +104,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./valentines_day.html">
  <span class="dropdown-text">Valentine’s Day</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./holiday_travel.html">
+ <span class="dropdown-text">Holiday Travel</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -147,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 16, 2025</p>
+      <p class="date">February 17, 2025</p>
     </div>
   </div>
   
@@ -159,6 +163,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The data set used in this project, <strong>Valentine’s Day Consumer Data</strong>, is sourced from <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-02-13">TidyTuesday</a>. TidyTuesday is a weekly R project that encourages users to create visualizations using that week’s data set for wrangling and visualizing the data.</p>
+<p>This particular data set is from the February 13, 2024 edition of TidyTuesday. Using information from surveys conducted by the National Retail Federation in the United States, we have information on how individual’s celebrate Valentine’s Day annually. The data in this project is form 2010 to 2022, thanks to <a href="https://www.kaggle.com/datasets/infinator/happy-valentines-day-2022">Suraj Das’s work on Kaggle</a>.</p>
+<p>In analyzing the data set, I decided to look for a relationship between the average amount spent on Valentine’s Day gifts and the percent of individuals celebrating the holiday.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -168,6 +175,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Analyzing this chart, we observe a relatively negative correlation between the two variables. A possible trend that one could suggest through this visualization is that during years when there is a smaller proportion of individuals celebrating the holiday in a given year, those who do decide to celebrate are much more passionate about their gifts. This may give reason to why the average amount spent per person is marginally higher during years where the percent celebrating Valentine’s Day is lower in comparison to other years.</p>
+<p>Conversely and more realistically, one could interpret the visualization in saying that as more people celebrate, total spending is spread across a broader population. A larger spread could possibly lower the average amount per person as the effect of an extreme outlier would not be as influential as it is in a year with less people celebrating. An average is a value that is greatly affected by outliers, but as the number of observations increases, the effect of the outlier weakens.</p>
 
 
 

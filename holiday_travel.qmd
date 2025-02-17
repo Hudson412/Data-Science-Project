@@ -1,17 +1,20 @@
 ---
 title: "Holiday Travel"
----
-
----
 description: |
   Analysis of Global Holiday Travel data from TidyTuesday
 author: Hudson Colletti
-date: February 16, 2025
+date: February 17, 2025
 format: html
 execute: 
   warning: false
   message: false
 ---
+
+The data set used in this project, **Global Holidays and Travel**, is sourced from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-12-24). TidyTuesday is a weekly R project that encourages users to create visualizations using that week's data set for wrangling and visualizing the data.
+
+This particular data set is from December 24, 2024. It was found through an [article](https://www.nature.com/articles/s41597-022-01120-z) by Shengjie Lai (et al). The information presented is available thanks to funding from The Bill and Melinda Gates Foundation. The data was then curated by Jon Harmon. Sources for the data itself are cited below.
+
+In analyzing the data set, I decided to look for a relationship between the time of year and the number passengers while separating individuals dependent on whether the flight was domestic or international.
 
 ```{r message = FALSE, warning = FALSE, echo = FALSE}
 library(tidyverse)
@@ -31,9 +34,19 @@ monthly_passengers <- tuesdata$monthly_passengers
 ggplot(monthly_passengers, aes(x = Month)) +
   geom_point(aes(y = Domestic, color = "Domestic"), size = 3) +  # Domestic passengers (blue dots)
   geom_point(aes(y = International, color = "International"), size = 3) +  # International (red dots)
-  labs(title = "Monthly Air Passengers",
+  labs(title = "Monthly Domestic and International Air Passengers",
        x = "Month",
        y = "Passengers (in thousands)",
        color = "Flight Type")
 
 ```
+
+Taking a look at the chart, we can observe that travel seems to have a cyclical nature. During the summer months of the year, June - September, flights seem to pick up and more individuals are traveling. This shift seems realistic as individuals typically travel during the warmer months of the year and when their children are on summer break. Domestic flights also seem to pick up towards the end of the year (holiday season).
+
+Additionally, domestic flights consistently have higher passenger volumes compared to international flights across all 12 months of the year. Normally, international flights stay below 30,000 passengers per month. With this idea, domestic travel shows much more variability in passenger numbers compared to international travel.
+
+Citations:
+
+Lai S., Sorichetta A. and WorldPop (2020). Global Public and School Holidays 2010-2019. Mapping seasonal denominator dynamics in low- and middle-income settings, and Exploring the seasonality of COVID-19, funded by The Bill and Melinda Gates Foundation.
+
+Lai S., Sorichetta A. and WorldPop (2020). Monthly volume of airline passengers in 90 countries 2010-2018. Mapping seasonal denominator dynamics in low- and middle-income settings, and Exploring the seasonality of COVID-19, funded by The Bill and Melinda Gates Foundation.

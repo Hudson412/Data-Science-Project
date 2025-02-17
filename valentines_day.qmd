@@ -3,12 +3,18 @@ title: "Valentines Day"
 description: |
   Analysis of Valentines Day data from TidyTuesday
 author: Hudson Colletti
-date: February 16, 2025
+date: February 17, 2025
 format: html
 execute: 
   warning: false
   message: false
 ---
+
+The data set used in this project, **Valentine's Day Consumer Data**, is sourced from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-02-13). TidyTuesday is a weekly R project that encourages users to create visualizations using that week's data set for wrangling and visualizing the data.
+
+This particular data set is from the February 13, 2024 edition of TidyTuesday. Using information from surveys conducted by the National Retail Federation in the United States, we have information on how individual's celebrate Valentine's Day annually. The data in this project is form 2010 to 2022, thanks to [Suraj Das's work on Kaggle](https://www.kaggle.com/datasets/infinator/happy-valentines-day-2022).
+
+In analyzing the data set, I decided to look for a relationship between the average amount spent on Valentine's Day gifts and the percent of individuals celebrating the holiday.
 
 ```{r message = FALSE, warning = FALSE, echo = FALSE}
 library(tidyverse)
@@ -35,3 +41,7 @@ ggplot(historical_spending, aes(x = PercentCelebrating, y = PerPerson)) +
     title = "Average Amount Spent for Valentine's Day vs Percent Celebrating"
   )
 ```
+
+Analyzing this chart, we observe a relatively negative correlation between the two variables. A possible trend that one could suggest through this visualization is that during years when there is a smaller proportion of individuals celebrating the holiday in a given year, those who do decide to celebrate are much more passionate about their gifts. This may give reason to why the average amount spent per person is marginally higher during years where the percent celebrating Valentine's Day is lower in comparison to other years.
+
+Conversely and more realistically, one could interpret the visualization in saying that as more people celebrate, total spending is spread across a broader population. A larger spread could possibly lower the average amount per person as the effect of an extreme outlier would not be as influential as it is in a year with less people celebrating. An average is a value that is greatly affected by outliers, but as the number of observations increases, the effect of the outlier weakens.

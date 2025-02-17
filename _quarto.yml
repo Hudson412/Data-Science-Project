@@ -12,6 +12,8 @@ website:
         menu: 
           - text: "Valentine's Day"
             href: valentines_day.qmd
+          - text: "Holiday Travel"
+            href: holiday_travel.qmd
           
       
 

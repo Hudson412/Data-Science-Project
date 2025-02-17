@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Hudson Colletti">
-<meta name="dcterms.date" content="2025-02-16">
+<meta name="dcterms.date" content="2025-02-17">
 <meta name="description" content="Analysis of Global Holiday Travel data from TidyTuesday">
 
 <title>Project 1 - Holiday Travel</title>
@@ -104,6 +104,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./valentines_day.html">
  <span class="dropdown-text">Valentine’s Day</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./holiday_travel.html">
+ <span class="dropdown-text">Holiday Travel</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -147,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 16, 2025</p>
+      <p class="date">February 17, 2025</p>
     </div>
   </div>
   
@@ -159,6 +163,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>The data set used in this project, <strong>Global Holidays and Travel</strong>, is sourced from <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2024/2024-12-24">TidyTuesday</a>. TidyTuesday is a weekly R project that encourages users to create visualizations using that week’s data set for wrangling and visualizing the data.</p>
+<p>This particular data set is from December 24, 2024. It was found through an <a href="https://www.nature.com/articles/s41597-022-01120-z">article</a> by Shengjie Lai (et al). The information presented is available thanks to funding from The Bill and Melinda Gates Foundation. The data was then curated by Jon Harmon. Sources for the data itself are cited below.</p>
+<p>In analyzing the data set, I decided to look for a relationship between the time of year and the number passengers while separating individuals dependent on whether the flight was domestic or international.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -168,6 +175,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Taking a look at the chart, we can observe that travel seems to have a cyclical nature. During the summer months of the year, June - September, flights seem to pick up and more individuals are traveling. This shift seems realistic as individuals typically travel during the warmer months of the year and when their children are on summer break. Domestic flights also seem to pick up towards the end of the year (holiday season).</p>
+<p>Additionally, domestic flights consistently have higher passenger volumes compared to international flights across all 12 months of the year. Normally, international flights stay below 30,000 passengers per month. With this idea, domestic travel shows much more variability in passenger numbers compared to international travel.</p>
+<p>Citations:</p>
+<p>Lai S., Sorichetta A. and WorldPop (2020). Global Public and School Holidays 2010-2019. Mapping seasonal denominator dynamics in low- and middle-income settings, and Exploring the seasonality of COVID-19, funded by The Bill and Melinda Gates Foundation.</p>
+<p>Lai S., Sorichetta A. and WorldPop (2020). Monthly volume of airline passengers in 90 countries 2010-2018. Mapping seasonal denominator dynamics in low- and middle-income settings, and Exploring the seasonality of COVID-19, funded by The Bill and Melinda Gates Foundation.</p>
 
 
 

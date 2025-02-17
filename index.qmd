@@ -1,10 +1,4 @@
 ---
-title: "Project 1: Website"
----
-
-Welcome to my website! Here are a few links with more information about myself.
-
----
 title: "Hudson's Website"
 image: headshot.jpeg
 toc: false
@@ -20,3 +14,5 @@ about:
 ---
 
 Hi! I am a sophomore at Pomona College studying Math and Economics with a Minor in Data Science. Growing up in Pittsburgh, PA, I found the transition to living in California difficult at first but now love it. Professionally, I am currently pursuing a career in Investment Banking or Private Equity. Outside of professional and academic interests, I am currently training for an Ironman, love golfing, and enjoy playing poker in my free time.
+
+Here are a few links with more information about myself and the code for this website.
