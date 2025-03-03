@@ -1,0 +1,109 @@
+---
+title: "Netflix Titles"
+description: |
+  Analysis of Netflix Titles data from TidyTuesday
+author: Hudson Colletti
+date: March 2, 2025
+format: html
+execute: 
+  warning: false
+  message: false
+---
+
+```{r, message = FALSE, warning = FALSE, echo = FALSE}
+library(tidyverse)
+```
+
+```{r, echo = FALSE}
+library("tidytuesdayR")
+library("ggplot2")
+library(stringr)
+
+
+tuesdata <- tidytuesdayR::tt_load('2021-04-20')
+
+netflix <- tuesdata$netflix
+```
+The data set used in this project, **Netflix Movies and TV Shows**, is sourced from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/main/data/2021/2021-04-20). TidyTuesday is a weekly R project that encourages users to create visualizations using that week's data set for wrangling and visualizing the data.
+
+This particular data set is from the April 20, 2021 edition of TidyTuesday. Using information conducted by Flixable, a third party Netflix search engine, we have data detailing the amount of titles that Netflix offers. The data in this project comes thanks to [Shivam Bansal's work on Kaggle](https://www.kaggle.com/datasets/shivamb/netflix-shows/data).
+
+In analyzing the data set, I first decided to look at Netflix's title releasing activity within the United States. The chart is separated by content type, either Movie or TV Show. Secondly, I aimed to look at how the length of titles has changed over time. Finally, I looked at the frequency of titles starting with the articles "A" or "An" has changed over the past decade. 
+
+
+```{r, echo = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+netflix_summary <- netflix |>
+  mutate(added_year = str_extract(date_added, "\\d{4}")) |>
+  mutate(united_states_only = str_extract(country, "^United States")) |>
+  mutate(title_length = str_length(title)) |>
+  filter(str_detect(added_year, "\\d{4}")) |>
+  filter(str_detect(country, "^United States")) |>
+  group_by(added_year, type) |>
+  summarize(count = n(), .groups = "drop")
+
+ggplot(netflix_summary, aes(x = added_year, y = count, group = type, color = type)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Netflix Content Trends Over Time in the United States",
+       x = "Year Added to Netflix",
+       y = "Number of Titles",
+       color = "Content Type")
+
+```
+
+Looking at the produced chart, we observe an enourmous spike in title additions to Netflix. Starting around 2015, the company began to rapidly add more titles to their page. The pattern is evident in both Movies and TV Shows but more dramatic in Movies. Near the end of the graph we observe an extreme drop off that is likely due to the dataset being put together in the middle of the 2021. Otherwise, this shift could be a result of COVID-19 or other policy changes in titles.
+
+Another key piece of information to keep in mind is that this chart specifically has to do with the United States, so international trends may differ. Much of Netflix's audience is based in the United States, but they do have many users overseas. Many titles are available in only certain locations as well. 
+
+```{r, echo = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+title_length_by_year_type <- netflix |>
+  group_by(release_year, type) |>
+  filter(!str_detect(title, "\\bThe\\b")) |>
+  summarize(avg_title_length = mean(str_length(title)), na.rm = TRUE, count = n(), .groups = "drop") |>
+  filter(release_year >= 2000)
+
+ggplot(title_length_by_year_type, aes(x = release_year, y = avg_title_length, color = type)) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title = "Average Netflix Title Length Over Time",
+    x = "Release Year",
+    y = "Average Title Length (characters)",
+    color = "Content Type"
+  )
+
+```
+
+This chart is based off of all Netflix titles across the world, rather than just the United States. There doesn't seem to be too much of an overall trend in either Movies or TV Shows. Movie titles showed significant volatility throughout the past decade with a noticeable uptick in 2016 that lasted until the boundary of this chart. 
+
+TV Shows fluctuated even more extremely than Movies during the early portion of the chart. The value begins to level out/stabilize around 2012. This stabilization occurs at around 15-17 characters. 
+
+```{r, echo = FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+netflix_titles_with_article <- netflix |>
+  mutate(added_year = str_extract(date_added, "\\d{4}")) |>
+  filter(str_detect(added_year, "\\d{4}")) |>
+  mutate(starts_with_article = str_detect(title, "(?=^(A|An)\\b)")) |>
+  filter(starts_with_article) |>
+  group_by(added_year) |>
+  summarize(count = n(), .groups = "drop")
+
+ggplot(netflix_titles_with_article, aes(x = added_year, y = count)) +
+  geom_point() +
+  labs(
+    title = "Netflix Titles Starting with 'A' or 'An' Over Time",
+    x = "Year Added to Netflix",
+    y = "Number of Titles",
+  )
+
+
+```
+
+For the first three years of the chart, titles beginning with the articles 'A' or 'An' were quite rare. A steady increase begins in 2016, which continues to rapidly grow throughout the chart. Again, I expect the immediate drop in 2021 to be due to policy changes, COVID-19, or the fact that the data was collected halfway through this year. 
+
+The dramatic growth in these titles is likely connected to the idea that movies are often sorted alphabetically. If a title starts with A or An, then it would be listed at the top of Netflix's page of media. Now, these articles are ignored, so the decrease in titles starting with the two articles could reflect producers realizing the placement of an article will not affect their placement in alphabetical content lists. 

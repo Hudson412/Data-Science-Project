@@ -14,11 +14,18 @@ website:
             href: valentines_day.qmd
           - text: "Holiday Travel"
             href: holiday_travel.qmd
-          
-      
+          - text: "Netflix Analysis"
+            href: string_analysis.qmd
+ 
 
 format:
   html:
+    code-tools:
+      source: true
+      toggle: false
+      caption: none   
+    code-fold: true
+    code-summary: "Show the code"      
     theme: cosmo
     css: styles.css
     toc: true
