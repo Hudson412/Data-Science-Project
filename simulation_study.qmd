@@ -1,0 +1,93 @@
+---
+title: "Simulation Study"
+description: |
+  Simulation Study of Hollywood Relationship Age Differences from TidyTuesday Data
+author: Hudson Colletti
+date: March 31, 2025
+format: html
+execute: 
+  warning: false
+  message: false
+---
+
+The data set used in this project, **Hollywood Age Gaps**, is sourced from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/tree/main/data/2023/2023-02-14). TidyTuesday is a weekly R project that encourages users to create visualizations using that week's data set for wrangling and visualizing the data.
+
+This particular data set is from the February 14, 2023 edition of TidyTuesday. Using information from Data is Plural, we have information on the age gap between movie love interests. The characters must not be animated, the youngest actor must be at least 17 years old, and the relationship must be an actual love interest.
+
+The purpose of this analysis is to investigate whether there is a significant difference in the average age gap between romantic pairs in Hollywood films based on the type of relationship. We will look into two relationship types: The first is when the older actor is a man and the younger is a woman while the second is the opposite where the older actor is a woman and the younger actor is a man.
+
+Null Hypothesis: The average age gap between Male-Older and Female-Older relationships is the same.
+
+Alternative Hypothesis: The average age gap in Male-Older relationships is not the same as Female-Older relationships.
+
+First, a visualization of the original data and variables of interest are included for the reader to understand the extent of the difference of the relationship.
+
+```{r}
+library(tidyverse)
+library("tidytuesdayR")
+library("ggplot2")
+
+set.seed(47)
+
+tuesdata <- tidytuesdayR::tt_load(2023, week = 7)
+
+age_gaps <- tuesdata$age_gaps
+
+age_gaps <- age_gaps |>
+  mutate(relationship_type = ifelse(character_1_gender == "man" & character_2_gender == "woman", "Male-Older", "Female-Older"))
+
+observed_diff <- age_gaps |>
+  group_by(relationship_type) |>
+  summarize(mean_age_diff = mean(age_difference, na.rm = TRUE)) |>
+  summarize(diff = diff(mean_age_diff)) |>
+  pull(diff)
+
+
+random_age_diff <- function(data) {
+  shuffled_data <- data |>
+    mutate(relationship_type = sample(relationship_type))
+  
+  mean_diffs <- shuffled_data |>
+    group_by(relationship_type) |>
+    summarize(mean_age_diff = mean(age_difference, na.rm = TRUE)) |>
+    summarize(diff = diff(mean_age_diff)) |>
+    pull(diff)
+  
+  return(mean_diffs)
+}
+
+age_gaps |>
+  ggplot(aes(x = relationship_type,
+             y = age_difference,
+  )) + 
+  geom_boxplot() +
+  labs(
+    x = "Relationship Type",
+    y = "Age Difference",
+    title = "Distribution of Age Differences by Relationship Type") 
+
+```
+
+We first observe a noticeably large gap in the age difference between the two relationship types. The median age difference of Male-older relationships is greater than the 75th percent quartile of the Female-older relationships. Additionally, the 25th percent quartile of Male-older relationships is higher than even the median of Female-Older relationships.
+
+```{r}
+num_sims <- 1000
+null_diffs <- map_dbl(1:num_sims, ~ random_age_diff(age_gaps))
+
+data.frame(null_diffs) |> 
+  ggplot(aes(x = null_diffs)) + 
+  geom_histogram() + 
+  geom_vline(xintercept = observed_diff, color = "red") + 
+  labs(
+    x = "Difference in Mean Age Gap (Male-Older - Female-Older)",
+    y = "Number of Relationships",
+    title = "Sampling Distribution of Age Gap Differences when Null Hypothesis is True",
+  ) 
+p_value <- mean(null_diffs >= observed_diff)
+```
+
+I used a permutation test to simulate the null hypothesis by randomly shuffling the relationship type labels. The difference in mean age gaps was calculated for each permutation to generate a null distribution. The observed difference was then compared to this distribution to determine statistical significance.
+
+The permutation test shows that the observed difference in mean age gaps between Male-Older and Female-older relationships is approximately 5.9, which is far from the center of the null distribution shown above. The calculated p-value of 0 indicates we have sufficient evidence to reject the null hypothesis that there is no difference in mean age gaps between these relationship types.
+
+Therefore, we can conclude that the difference in age gaps is statistically significant. Thus, there is a meaningful disparity between these relationship types that is not due to chance.

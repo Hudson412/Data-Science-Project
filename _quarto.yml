@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 website:
-  title: "Project 1"
+  title: "DS 2 Project"
   navbar:
     left:
       - href: index.qmd
@@ -16,6 +16,8 @@ website:
             href: holiday_travel.qmd
           - text: "Netflix Analysis"
             href: string_analysis.qmd
+          - text: "Simulation Study"
+            href: simulation_study.qmd
  
 
 format:
