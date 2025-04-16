@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DS 2 Project - Hudson’s Website</title>
+<title>DS 2 Project - Ethical Analysis of Amazon’s AI Reruiting Tool</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,7 +54,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -67,6 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -122,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -149,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./ethics.html"> 
+    <a class="nav-link active" href="./ethics.html" aria-current="page"> 
 <span class="menu-text">Amazon Ethical Analysis</span></a>
   </li>  
 </ul>
@@ -163,38 +184,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla content column-page">
-  <img src="headshot.jpeg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Hudson’s Website</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Ethical Analysis of Amazon’s AI Reruiting Tool</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i></button></div></div>
 </div>
+
+
+
 <div class="quarto-title-meta column-page">
+
+    
+  
+    
   </div>
-</header><main class="content column-page" id="quarto-document-content">
-<p>Hi! I am a sophomore at Pomona College studying Math and Economics with a Minor in Data Science. Growing up in Pittsburgh, PA, I found the transition to living in California difficult at first but now love it. Professionally, I am currently pursuing a career in Investment Banking or Private Equity. Outside of professional and academic interests, I am currently training for an Ironman, love golfing, and enjoy playing poker in my free time.</p>
-<p>Here are a few links with more information about myself and the code for this website.</p>
+  
+
+
+</header>
+
+
+<p>In 2014, Amazon developed a recruiting tool that used artificial intelligence to scan resumes in order to increase the efficiency of the hiring process for positions at the company. This tool was originally intended to automatically and quickly identify top candidates from a pool by learning patters from historical hiring data. Eventually, however, Amazon realized that the algorithm was actually quite unfair. It was consistently downgrading resumes that included the word “women” or came from an individual attending a women’s college. The tech giant ultimately traced the bias back to the original data that the model was based off of. The data came from the past 10 years of hiring data, which mainly consisted of male applicants. During this period, there was a national trend where the majority of positions in the tech industry were filled by men. The model taught itself that male candidates were preferable for the company, reflecting the male dominance in the field and Amazon’s historical applicant pool. Thus, the tool led to discriminating against female candidates, and the firm discontinued use of this artificial intelligence tool for recruitment. This occurrence as a whole presents a significant ethical dilemma. <span class="citation" data-cites="Dastin2018">(<a href="#ref-Dastin2018" role="doc-biblioref">Dastin 2018</a>)</span></p>
+<p>Others argue that Amazon was not completely at fault for this hiring flaw as bias in AI can be driven by a multitude of factors. There are many factors unrelated to the data that the tool pulls from that could have caused this issue. The individuals that use the tool along with other external variables can adjust how artificial intelligence “feels” towards something. <span class="citation" data-cites="Lavanchy2018">(<a href="#ref-Lavanchy2018" role="doc-biblioref">Lavanchy 2018</a>)</span></p>
+<p>When companies collect data from job applicants, there is an expectation that the information will be used solely for evaluating their candidacy. Speaking to the permission structure for using the data in this situation, the resumes used to train Amazon’s hiring tool were originally submitted for the purpose of obtaining employment at the company. Job applicants were sharing their personal information, in the form of a resume, under the impression that only job recruiters were the only individuals using this information. There is no evidence that the applicants were explicitly informed that the data would actually be used to train an artificial intelligence system. And this goes for individuals from a period of ten years that applied to Amazon. Thus, the permission structure of using the data was not correctly followed as applicants were unaware that their data would be used for purposes outside the scope of evaluating their candidacy for a job posting. If the company had explicitly specified that resumes would be used for their typical usage and model training, then the permission structure would have been followed a bit closer. <span class="citation" data-cites="Dastin2018">(<a href="#ref-Dastin2018" role="doc-biblioref">Dastin 2018</a>)</span></p>
+<p>For an algorithm to make fair decisions, the data it is trained on must accurately represent the population it will be applied to. One of if not the largest flaws in this situation is who was measured to train the algorithm. As stated in the overview of the event, the hiring tool was trained on resumes sent in to Amazon over a ten year period. This information was primarily submitted for technical roles at the company. This period stands in the middle of the tech industry’s extreme gender imbalance <span class="citation" data-cites="Lavanchy2018">(<a href="#ref-Lavanchy2018" role="doc-biblioref">Lavanchy 2018</a>)</span>. For many years, jobs within the tech world have been dominated by males. Thus, the applicant pool that Amazon pulled its resumes from was extremely skewed toward men. For this reason, the algorithm quickly began to associate male characteristics and applicants with successful candidates (those who were hired in the past). The usage of this model would only reaffirm and amplify existing biases in the field. Using this dataset to generalize or apply the algorithm to all applicants for the position at Amazon is unethical and results in biased outcomes. We must raise concerns when analyzing data that we do not know how it was collected. <span class="citation" data-cites="Dastin2018">(<a href="#ref-Dastin2018" role="doc-biblioref">Dastin 2018</a>)</span></p>
+<p>Identifiable data is information that can be directly traced back to a specific individual. A few examples would include things like names, contact information, and other unique identifiers. In order to protect the privacy of customers, companies will typically try to keep this information secure or anonymized by removing identifiers. In this situation, Amazon was working with resumes, which contain lots of personal identifiable information like names, education, and work experience. Thus, the information within this data was inherently identifiable. Both articles referenced fail to mention anything about an anonymization process before using the data for algorithmic , so we can assume that anonymity was not secured. In this case, the data was not old enough or anonymized to be free of ethical concerns. Since the algorithm learned every detail on the resumes, including identifying details, the risk of identification and unintended use of personal data remained unethically significant. <span class="citation" data-cites="Dastin2018">(<a href="#ref-Dastin2018" role="doc-biblioref">Dastin 2018</a>)</span></p>
+<p><br>
+Gender is a complex variable, especially in contexts like hiring where fairness and equal opportunity are critical. Even when gender is not meaningfully included as a data point, learned algorithms can infer an individuals gender. This inference can then lead to biased or discriminatory outcomes if it is not carefully managed. Amazon’s AI hiring tool penalized resumes that included the word “women’s” or gave reason for the algorithm to believe the applicant was female <span class="citation" data-cites="Lavanchy2018">(<a href="#ref-Lavanchy2018" role="doc-biblioref">Lavanchy 2018</a>)</span>. This is an example of how gender can become a proxy variable in data science even when it is not explicitly included in a study. Thus, using race or gender as variables in artificial intelligence like hiring algorithms is unethical as it can serve as a proxy for continued social disadvantages. Furthermore, these disadvantages would ultimately lead to discrimination and worsened inequalities.</p>
 
 
 <!-- -->
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/hudsoncolletti/" class="about-link" rel="" target="">
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/Hudson412" class="about-link" rel="" target="">
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="mailto:hpch2023@mymail.pomona.edu" class="about-link" rel="" target="">
-     <span class="about-link-text">Email</span>
-  </a>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Dastin2018" class="csl-entry" role="listitem">
+Dastin, Jeffrey. 2018. <span>“Insight - Amazon Scraps Secret AI Recruiting Tool That Showed Bias Against Women.”</span>
 </div>
+<div id="ref-Lavanchy2018" class="csl-entry" role="listitem">
+Lavanchy, Maude. 2018. <span>“Amazon’s Sexist Hiring Algorithm Could Still Be Better Than a Human.”</span>
 </div>
- <!-- /main -->
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -215,6 +250,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -649,23 +691,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Hudson's Website"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> headshot.jpeg</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> false</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">about:</span><span class="co"> </span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  template: jolla</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">  links:</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    - text: LinkedIn</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">      href: https://www.linkedin.com/in/hudsoncolletti/</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    - text: GitHub</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">      href: https://github.com/Hudson412</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    - text: Email</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">      href: mailto:hpch2023@mymail.pomona.edu</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Ethical Analysis of Amazon's AI Reruiting Tool"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>In 2014, Amazon developed a recruiting tool that used artificial intelligence to scan resumes in order to increase the efficiency of the hiring process for positions at the company. This tool was originally intended to automatically and quickly identify top candidates from a pool by learning patters from historical hiring data. Eventually, however, Amazon realized that the algorithm was actually quite unfair. It was consistently downgrading resumes that included the word "women" or came from an individual attending a women's college. The tech giant ultimately traced the bias back to the original data that the model was based off of. The data came from the past 10 years of hiring data, which mainly consisted of male applicants. During this period, there was a national trend where the majority of positions in the tech industry were filled by men. The model taught itself that male candidates were preferable for the company, reflecting the male dominance in the field and Amazon's historical applicant pool. Thus, the tool led to discriminating against female candidates, and the firm discontinued use of this artificial intelligence tool for recruitment. This occurrence as a whole presents a significant ethical dilemma. <span class="co">[</span><span class="ot">@Dastin2018</span><span class="co">]</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Others argue that Amazon was not completely at fault for this hiring flaw as bias in AI can be driven by a multitude of factors. There are many factors unrelated to the data that the tool pulls from that could have caused this issue. The individuals that use the tool along with other external variables can adjust how artificial intelligence "feels" towards something. <span class="co">[</span><span class="ot">@Lavanchy2018</span><span class="co">]</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>When companies collect data from job applicants, there is an expectation that the information will be used solely for evaluating their candidacy. Speaking to the permission structure for using the data in this situation, the resumes used to train Amazon's hiring tool were originally submitted for the purpose of obtaining employment at the company. Job applicants were sharing their personal information, in the form of a resume, under the impression that only job recruiters were the only individuals using this information. There is no evidence that the applicants were explicitly informed that the data would actually be used to train an artificial intelligence system. And this goes for individuals from a period of ten years that applied to Amazon. Thus, the permission structure of using the data was not correctly followed as applicants were unaware that their data would be used for purposes outside the scope of evaluating their candidacy for a job posting. If the company had explicitly specified that resumes would be used for their typical usage and model training, then the permission structure would have been followed a bit closer. <span class="co">[</span><span class="ot">@Dastin2018</span><span class="co">]</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>For an algorithm to make fair decisions, the data it is trained on must accurately represent the population it will be applied to. One of if not the largest flaws in this situation is who was measured to train the algorithm. As stated in the overview of the event, the hiring tool was trained on resumes sent in to Amazon over a ten year period. This information was primarily submitted for technical roles at the company. This period stands in the middle of the tech industry's extreme gender imbalance <span class="co">[</span><span class="ot">@Lavanchy2018</span><span class="co">]</span>. For many years, jobs within the tech world have been dominated by males. Thus, the applicant pool that Amazon pulled its resumes from was extremely skewed toward men. For this reason, the algorithm quickly began to associate male characteristics and applicants with successful candidates (those who were hired in the past). The usage of this model would only reaffirm and amplify existing biases in the field. Using this dataset to generalize or apply the algorithm to all applicants for the position at Amazon is unethical and results in biased outcomes. We must raise concerns when analyzing data that we do not know how it was collected. <span class="co">[</span><span class="ot">@Dastin2018</span><span class="co">]</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Identifiable data is information that can be directly traced back to a specific individual. A few examples would include things like names, contact information, and other unique identifiers. In order to protect the privacy of customers, companies will typically try to keep this information secure or anonymized by removing identifiers. In this situation, Amazon was working with resumes, which contain lots of personal identifiable information like names, education, and work experience. Thus, the information within this data was inherently identifiable. Both articles referenced fail to mention anything about an anonymization process before using the data for algorithmic , so we can assume that anonymity was not secured. In this case, the data was not old enough or anonymized to be free of ethical concerns. Since the algorithm learned every detail on the resumes, including identifying details, the risk of identification and unintended use of personal data remained unethically significant. <span class="co">[</span><span class="ot">@Dastin2018</span><span class="co">]</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Hi! I am a sophomore at Pomona College studying Math and Economics with a Minor in Data Science. Growing up in Pittsburgh, PA, I found the transition to living in California difficult at first but now love it. Professionally, I am currently pursuing a career in Investment Banking or Private Equity. Outside of professional and academic interests, I am currently training for an Ironman, love golfing, and enjoy playing poker in my free time.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Here are a few links with more information about myself and the code for this website.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>\</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Gender is a complex variable, especially in contexts like hiring where fairness and equal opportunity are critical. Even when gender is not meaningfully included as a data point, learned algorithms can infer an individuals gender. This inference can then lead to biased or discriminatory outcomes if it is not carefully managed. Amazon's AI hiring tool penalized resumes that included the word "women's" or gave reason for the algorithm to believe the applicant was female <span class="co">[</span><span class="ot">@Lavanchy2018</span><span class="co">]</span>. This is an example of how gender can become a proxy variable in data science even when it is not explicitly included in a study. Thus, using race or gender as variables in artificial intelligence like hiring algorithms is unethical as it can serve as a proxy for continued social disadvantages. Furthermore, these disadvantages would ultimately lead to discrimination and worsened inequalities.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
