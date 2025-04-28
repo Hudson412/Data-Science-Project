@@ -20,6 +20,8 @@ website:
             href: simulation_study.qmd
       - text: "Amazon Ethical Analysis"
         href: ethics.qmd
+      - text: "Traffic Stop Analysis"
+        href: traffic.qmd
  
 
 format:
