@@ -22,6 +22,8 @@ website:
         href: ethics.qmd
       - text: "Traffic Stop Analysis"
         href: traffic.qmd
+      - href: "Final Presentation"
+        text: Final_Presentation.qmd
  
 
 format:

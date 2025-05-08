@@ -32,8 +32,8 @@ monthly_passengers <- tuesdata$monthly_passengers
 
 ```{r, echo = FALSE}
 ggplot(monthly_passengers, aes(x = Month)) +
-  geom_point(aes(y = Domestic, color = "Domestic"), size = 3) +  # Domestic passengers (blue dots)
-  geom_point(aes(y = International, color = "International"), size = 3) +  # International (red dots)
+  geom_point(aes(y = Domestic, color = "Domestic"), size = 3, na.rm = TRUE) +  
+  geom_point(aes(y = International, color = "International"), size = 3, na.rm = TRUE) +  
   labs(title = "Monthly Domestic and International Air Passengers",
        x = "Month",
        y = "Passengers (in thousands)",

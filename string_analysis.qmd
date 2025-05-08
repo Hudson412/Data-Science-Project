@@ -82,28 +82,30 @@ This chart is based off of all Netflix titles across the world, rather than just
 
 TV Shows fluctuated even more extremely than Movies during the early portion of the chart. The value begins to level out/stabilize around 2012. This stabilization occurs at around 15-17 characters. 
 
-```{r, echo = FALSE}
-#| code-fold: true
-#| code-summary: "Show the code"
-netflix_titles_with_article <- netflix |>
+
+```{r}
+netflix |>
   mutate(added_year = str_extract(date_added, "\\d{4}")) |>
   filter(str_detect(added_year, "\\d{4}")) |>
-  mutate(starts_with_article = str_detect(title, "(?=^(A|An)\\b)")) |>
-  filter(starts_with_article) |>
   group_by(added_year) |>
-  summarize(count = n(), .groups = "drop")
-
-ggplot(netflix_titles_with_article, aes(x = added_year, y = count)) +
+  summarize(
+    total_titles = n(),
+    titles_with_article = sum(str_detect(title, "^A\\b|^An\\b")),
+    proportion = titles_with_article / total_titles,
+    .groups = "drop"
+  ) |>
+  ggplot(aes(x = added_year, y = proportion)) +
   geom_point() +
   labs(
-    title = "Netflix Titles Starting with 'A' or 'An' Over Time",
+    title = "Proportion of Netflix Titles Starting with 'A' or 'An' Over Time",
     x = "Year Added to Netflix",
-    y = "Number of Titles",
+    y = "Proportion of Titles"
   )
-
 
 ```
 
-For the first three years of the chart, titles beginning with the articles 'A' or 'An' were quite rare. A steady increase begins in 2016, which continues to rapidly grow throughout the chart. Again, I expect the immediate drop in 2021 to be due to policy changes, COVID-19, or the fact that the data was collected halfway through this year. 
 
-The dramatic growth in these titles is likely connected to the idea that movies are often sorted alphabetically. If a title starts with A or An, then it would be listed at the top of Netflix's page of media. Now, these articles are ignored, so the decrease in titles starting with the two articles could reflect producers realizing the placement of an article will not affect their placement in alphabetical content lists. 
+
+Between the years 2008-2014, the proportion of titles added to Netflix that had titles starting with these articles was basically negligible and nonexistent. 2011 and 2013 are dramatic outliers from this pattern and the overall trend of the graph as a whole. It is likely a random coincidence but could be explained by producers aiming to land themselves a spot at the beginning of a list of titles sorted alphabetically. This is purely a speculation, but streaming platforms have now removed articles when sorting titles alphabetically. 
+
+Around 2015, a notable uptick occurs as proportions begin to grow substantially above previous years. These proportions seem to stabilize between 1.5-2.5% of all titles. There is reason to believe that as the overall number of titles released on Netflix grew, the proportion of titles with 'A'/'An' increased as well. 
