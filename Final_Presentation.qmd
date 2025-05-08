@@ -16,12 +16,12 @@ execute:
 
 ## Overview of Data
 
-- Analysis of Netflix Movies & TV Shows  
-- Data from [TidyTuesday (2021-04-20)](https://github.com/rfordatascience/tidytuesday)
-- Focus on trends in U.S. content, title length, and naming conventions  
-- Data originally collected by [Shivam Bansal on Kaggle](https://www.kaggle.com/datasets/shivamb/netflix-shows/data)
+-   Analysis of Netflix Movies & TV Shows\
+-   Data from [TidyTuesday (2021-04-20)](https://github.com/rfordatascience/tidytuesday)
+-   Focus on trends in U.S. content, title length, and naming conventions\
+-   Data originally collected by [Shivam Bansal on Kaggle](https://www.kaggle.com/datasets/shivamb/netflix-shows/data)
 
----
+------------------------------------------------------------------------
 
 ## Visualization 1 - Netflix Content Trends Over Time in the United States
 
@@ -57,10 +57,10 @@ ggplot(netflix_summary, aes(x = added_year, y = count, group = type, color = typ
 
 From 2015 onward, there is a steep increase in content added to Netflix in the U.S. Movies drive most of the growth, but TV Shows also rise sharply.
 
-- The sudden drop in 2021 likely reflects:
-  - COVID-19 production slowdowns
-  - Partial year data
-  - Internal Netflix policy shifts
+-   The sudden drop in 2021 likely reflects:
+    -   COVID-19 production slowdowns
+    -   Partial year data
+    -   Internal Netflix policy shifts
 
 Increased User Retention
 
@@ -87,12 +87,10 @@ ggplot(title_length_by_year_type, aes(x = release_year, y = avg_title_length, co
 
 ## Visualization 2 Analysis
 
-- Movie title lengths have fluctuated over time, with consistently longer titles after 2015.
-- TV show title lengths fluctuated from 2000-2012  
-  - Since 2012, TV titles have stabilized between 15–17 characters
-- Movie titles are now typically longer than TV Shows
-
-
+-   Movie title lengths have fluctuated over time, with consistently longer titles after 2015.
+-   TV show title lengths fluctuated from 2000-2012
+    -   Since 2012, TV titles have stabilized between 15–17 characters
+-   Movie titles are now typically longer than TV Shows
 
 ## Visualization 3 - Netflix Titles Starting with 'A' or 'An' Over Time
 
@@ -120,27 +118,23 @@ netflix |>
 
 ## Visualization 3 Analysis
 
-- Between 2008-2014 the proportion of titles beginning with 'A'/'An' was extremely low. 2011 and 2013 are outlier years possibly explained by:
-  - Low total title counts
-  - Certain acquisitions that skewed overall 
+-   Between 2008-2014 the proportion of titles beginning with 'A'/'An' was extremely low. 2011 and 2013 are outlier years possibly explained by:
+    -   Low total title counts
+    -   Certain acquisitions that skewed overall
+-   The proportion of titles beginning with these articles increased sharply from 2015 on
+    -   This growth may reflect a gaming of alphabetization in recommendation interfaces.
+-   These proportions stabilize between 1.5-2.5% of all titles.
 
-- The proportion of titles beginning with these articles increased sharply from 2015 on
-  - This growth may reflect a gaming of alphabetization in recommendation interfaces.
-
-  
-- These proportions stabilize between 1.5-2.5% of all titles. 
-  
-  
 ## Summarized Conclusions
 
-- Netflix’s title trends reflect strategic business choices:
-  - Rapid content expansion
-  - Title naming decisions
-  
-- These patterns provide insight into how data can shift business models in the streaming industry
+-   Netflix’s title trends reflect strategic business choices:
 
-- As the overall number of titles released on Netflix grew, the proportion of titles with 'A'/'An' increased as well. 
+    -   Rapid content expansion
+    -   Title naming decisions
 
+-   These patterns provide insight into how data can shift business models in the streaming industry
+
+-   As the overall number of titles released on Netflix grew, the proportion of titles with 'A'/'An' increased as well.
 
 # Thanks for Watching
 
