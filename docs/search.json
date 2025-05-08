@@ -18,7 +18,7 @@
     "href": "string_analysis.html",
     "title": "Netflix Titles",
     "section": "",
-    "text": "The data set used in this project, Netflix Movies and TV Shows, is sourced from TidyTuesday. TidyTuesday is a weekly R project that encourages users to create visualizations using that week’s data set for wrangling and visualizing the data.\nThis particular data set is from the April 20, 2021 edition of TidyTuesday. Using information conducted by Flixable, a third party Netflix search engine, we have data detailing the amount of titles that Netflix offers. The data in this project comes thanks to Shivam Bansal’s work on Kaggle.\nIn analyzing the data set, I first decided to look at Netflix’s title releasing activity within the United States. The chart is separated by content type, either Movie or TV Show. Secondly, I aimed to look at how the length of titles has changed over time. Finally, I looked at the frequency of titles starting with the articles “A” or “An” has changed over the past decade.\n\n\n\n\n\n\n\n\n\nLooking at the produced chart, we observe an enourmous spike in title additions to Netflix. Starting around 2015, the company began to rapidly add more titles to their page. The pattern is evident in both Movies and TV Shows but more dramatic in Movies. Near the end of the graph we observe an extreme drop off that is likely due to the dataset being put together in the middle of the 2021. Otherwise, this shift could be a result of COVID-19 or other policy changes in titles.\nAnother key piece of information to keep in mind is that this chart specifically has to do with the United States, so international trends may differ. Much of Netflix’s audience is based in the United States, but they do have many users overseas. Many titles are available in only certain locations as well.\n\n\n\n\n\n\n\n\n\nThis chart is based off of all Netflix titles across the world, rather than just the United States. There doesn’t seem to be too much of an overall trend in either Movies or TV Shows. Movie titles showed significant volatility throughout the past decade with a noticeable uptick in 2016 that lasted until the boundary of this chart.\nTV Shows fluctuated even more extremely than Movies during the early portion of the chart. The value begins to level out/stabilize around 2012. This stabilization occurs at around 15-17 characters.\n\n\n\n\n\n\n\n\n\nFor the first three years of the chart, titles beginning with the articles ‘A’ or ‘An’ were quite rare. A steady increase begins in 2016, which continues to rapidly grow throughout the chart. Again, I expect the immediate drop in 2021 to be due to policy changes, COVID-19, or the fact that the data was collected halfway through this year.\nThe dramatic growth in these titles is likely connected to the idea that movies are often sorted alphabetically. If a title starts with A or An, then it would be listed at the top of Netflix’s page of media. Now, these articles are ignored, so the decrease in titles starting with the two articles could reflect producers realizing the placement of an article will not affect their placement in alphabetical content lists."
+    "text": "The data set used in this project, Netflix Movies and TV Shows, is sourced from TidyTuesday. TidyTuesday is a weekly R project that encourages users to create visualizations using that week’s data set for wrangling and visualizing the data.\nThis particular data set is from the April 20, 2021 edition of TidyTuesday. Using information conducted by Flixable, a third party Netflix search engine, we have data detailing the amount of titles that Netflix offers. The data in this project comes thanks to Shivam Bansal’s work on Kaggle.\nIn analyzing the data set, I first decided to look at Netflix’s title releasing activity within the United States. The chart is separated by content type, either Movie or TV Show. Secondly, I aimed to look at how the length of titles has changed over time. Finally, I looked at the frequency of titles starting with the articles “A” or “An” has changed over the past decade.\n\n\n\n\n\n\n\n\n\nLooking at the produced chart, we observe an enourmous spike in title additions to Netflix. Starting around 2015, the company began to rapidly add more titles to their page. The pattern is evident in both Movies and TV Shows but more dramatic in Movies. Near the end of the graph we observe an extreme drop off that is likely due to the dataset being put together in the middle of the 2021. Otherwise, this shift could be a result of COVID-19 or other policy changes in titles.\nAnother key piece of information to keep in mind is that this chart specifically has to do with the United States, so international trends may differ. Much of Netflix’s audience is based in the United States, but they do have many users overseas. Many titles are available in only certain locations as well.\n\n\n\n\n\n\n\n\n\nThis chart is based off of all Netflix titles across the world, rather than just the United States. There doesn’t seem to be too much of an overall trend in either Movies or TV Shows. Movie titles showed significant volatility throughout the past decade with a noticeable uptick in 2016 that lasted until the boundary of this chart.\nTV Shows fluctuated even more extremely than Movies during the early portion of the chart. The value begins to level out/stabilize around 2012. This stabilization occurs at around 15-17 characters.\n\n\nShow the code\nnetflix |&gt;\n  mutate(added_year = str_extract(date_added, \"\\\\d{4}\")) |&gt;\n  filter(str_detect(added_year, \"\\\\d{4}\")) |&gt;\n  group_by(added_year) |&gt;\n  summarize(\n    total_titles = n(),\n    titles_with_article = sum(str_detect(title, \"^A\\\\b|^An\\\\b\")),\n    proportion = titles_with_article / total_titles,\n    .groups = \"drop\"\n  ) |&gt;\n  ggplot(aes(x = added_year, y = proportion)) +\n  geom_point() +\n  labs(\n    title = \"Proportion of Netflix Titles Starting with 'A' or 'An' Over Time\",\n    x = \"Year Added to Netflix\",\n    y = \"Proportion of Titles\"\n  )\n\n\n\n\n\n\n\n\n\nBetween the years 2008-2014, the proportion of titles added to Netflix that had titles starting with these articles was basically negligible and nonexistent. 2011 and 2013 are dramatic outliers from this pattern and the overall trend of the graph as a whole. It is likely a random coincidence but could be explained by producers aiming to land themselves a spot at the beginning of a list of titles sorted alphabetically. This is purely a speculation, but streaming platforms have now removed articles when sorting titles alphabetically.\nAround 2015, a notable uptick occurs as proportions begin to grow substantially above previous years. These proportions seem to stabilize between 1.5-2.5% of all titles. There is reason to believe that as the overall number of titles released on Netflix grew, the proportion of titles with ‘A’/‘An’ increased as well."
   },
   {
     "objectID": "holiday_travel.html",
@@ -46,6 +46,83 @@
     "href": "traffic.html",
     "title": "Project 5",
     "section": "",
-    "text": "In this analysis, I plan to look at traffic stops in three cities within the United States: Nashville, Raleigh, and San Diego. Each of these diverse locations should offer reasonably different outcome results. The three types of outcomes I looked at are warnings, citations, and arrests. Before performing on the data, I expect some simalarities between the Raleigh and Nashville data because they are situated geographically closer together than San Diego is with the cities. Using information from Stanford (Project 2020), I plan to control for the gender of individuals and see if males or females are stopped more frequently and how that varies among the three cities. Additionally I plan to look at potential trends in the outcomes of these traffic stops to see how gender and location may affect the traffic stop outcome.\n\n\n\n\n\n\n\n\n\nIn Nashville, warnings significantly dominate the arrest and citation outcomes for both genders. The overall trend of arrests being quite rare, followed by a much larger number of citations and a much, much larger number of warnings is visible in males and females. In males though, this pattern is exacerbated as the number of each outcome is respectively larger.\n\n\n\n\n\n\n\n\n\nIn San Diego, we observe an alternative trend where citations are actually the most common outcome regardless of gender. In both males and females, we see an extremely small number of arrests followed by a large number of warnings and even more citations.Again, this trend is even more noticeable in males compared to women. Females tend to receive more warnings relative to their total citation amount when compared to males.\n\n\n\n\n\n\n\n\n\nIn Raleigh, we observe a trend quite similar to San Diego. In both females and males, the number of arrests is significantly less than that of the larger number of warning outcomes and even larger citations. Arrests are quite rare in both groups but notably more frequent in males. Males again lead females in the volume of each outcome. Thus, males are stopped and penalized more frequently than females are.\nLooking at this analysis as a whole, I used SQL to adjust a group of datasets into a fine-tuned piece of data aligning with the goals of this project. I was then able to analyze such through visualization in R. Each visualization was faceted by gender and broke each traffic stop into either an arrest, citation, or warning.\nAs a whole, the result suggest that gender does in fact influence traffic stop outcomes quite consistently across cities, specifically Nashville, San Diego, and Raleigh. Going further, males were always more heavily policed than females, being stopped and penalized in many more situations than females within each city.\n\n\n\n\n\n\nReferences\n\nProject, Stanford Open Policing. 2020. “Stanford Open Policing Project Dataset.”"
+    "text": "In this analysis, I plan to look at traffic stops in three cities within the United States: Nashville, Raleigh, and San Diego. Each of these diverse locations should offer reasonably different outcome results. The three types of outcomes I looked at are warnings, citations, and arrests. Before performing on the data, I expect some simalarities between the Raleigh and Nashville data because they are situated geographically closer together than San Diego is with the cities. Using information from Stanford (Project 2020), I plan to control for the gender of individuals and see if males or females are stopped more frequently and how that varies among the three cities. Additionally I plan to look at potential trends in the outcomes of these traffic stops to see how gender and location may affect the traffic stop outcome.\n\n\n\n\n\n\n\n\n\nIn Nashville, warnings significantly dominate the arrest and citation outcomes for both genders. The overall trend of arrests being quite rare, followed by a much larger number of citations and a much, much larger number of warnings is visible in males and females. In males though, this pattern is exacerbated as the number of each outcome is respectively larger.\n\n\n\n\n\n\n\n\n\nIn San Diego, we observe an alternative trend where citations are actually the most common outcome regardless of gender. In both males and females, we see an extremely small number of arrests followed by a large number of warnings and even more citations.Again, this trend is even more noticeable in males compared to women. Females tend to receive more warnings relative to their total citation amount when compared to males.\n\n\n\n\n\n\n\n\n\nIn Raleigh, we observe a trend quite similar to San Diego. In both females and males, the number of arrests is significantly less than that of the larger number of warning outcomes and even larger citations. Arrests are quite rare in both groups but notably more frequent in males. Males again lead females in the volume of each outcome. Thus, males are stopped and penalized more frequently than females are.\nLooking at this analysis as a whole, I used SQL to adjust a group of datasets into a fine-tuned piece of data aligning with the goals of this project. I was then able to analyze such through visualization in R. Each visualization was faceted by gender and broke each traffic stop into either an arrest, citation, or warning.\nThe results suggest that gender does in fact influence traffic stop outcomes quite consistently across cities, specifically Nashville, San Diego, and Raleigh. Going further, males were always more heavily policed than females, being stopped and penalized in many more situations than females within each city.\n\n\n\n\n\n\nReferences\n\nProject, Stanford Open Policing. 2020. “Stanford Open Policing Project Dataset.”"
+  },
+  {
+    "objectID": "Final_Presentation.html#slide-1---netflix-title-analysis",
+    "href": "Final_Presentation.html#slide-1---netflix-title-analysis",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "SLide 1 - Netflix Title Analysis",
+    "text": "SLide 1 - Netflix Title Analysis\n\nAnalysis of Netflix Movies & TV Shows\n\nData from TidyTuesday (2021-04-20)\nFocus on trends in U.S. content, title length, and naming conventions\n\nData originally collected by Shivam Bansal on Kaggle"
+  },
+  {
+    "objectID": "Final_Presentation.html#slide-2---more-info",
+    "href": "Final_Presentation.html#slide-2---more-info",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Slide 2 - More info",
+    "text": "Slide 2 - More info\n\nThis is what bullet points look like."
+  },
+  {
+    "objectID": "Final_Presentation.html#overview-of-data",
+    "href": "Final_Presentation.html#overview-of-data",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Overview of Data",
+    "text": "Overview of Data\n\nAnalysis of Netflix Movies & TV Shows\n\nData from TidyTuesday (2021-04-20)\nFocus on trends in U.S. content, title length, and naming conventions\n\nData originally collected by Shivam Bansal on Kaggle"
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-1---netflix-content-trends-over-time-in-the-united-states",
+    "href": "Final_Presentation.html#visualization-1---netflix-content-trends-over-time-in-the-united-states",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 1 - Netflix Content Trends Over Time in the United States",
+    "text": "Visualization 1 - Netflix Content Trends Over Time in the United States"
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-1-analysis",
+    "href": "Final_Presentation.html#visualization-1-analysis",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 1 Analysis",
+    "text": "Visualization 1 Analysis\nFrom 2015 onward, there is a steep increase in content added to Netflix in the U.S. Movies drive most of the growth, but TV Shows also rise sharply.\n\nThe sudden drop in 2021 likely reflects:\n\nCOVID-19 production slowdowns\nPartial year data\nInternal Netflix policy shifts\n\n\nIncreased User Retention"
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-2---average-netflix-title-lenght-over-time",
+    "href": "Final_Presentation.html#visualization-2---average-netflix-title-lenght-over-time",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 2 - Average Netflix Title Lenght Over Time",
+    "text": "Visualization 2 - Average Netflix Title Lenght Over Time"
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-2-analysis",
+    "href": "Final_Presentation.html#visualization-2-analysis",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 2 Analysis",
+    "text": "Visualization 2 Analysis\n\nMovie title lengths have fluctuated over time, with consistently longer titles after 2015.\nTV show title lengths fluctuated from 2000-2012\n\nSince 2012, TV titles have stabilized between 15–17 characters\n\nMovie titles are now typically longer than TV Shows"
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-3---netflix-titles-starting-with-a-or-an-over-time",
+    "href": "Final_Presentation.html#visualization-3---netflix-titles-starting-with-a-or-an-over-time",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 3 - Netflix Titles Starting with ‘A’ or ‘An’ Over Time",
+    "text": "Visualization 3 - Netflix Titles Starting with ‘A’ or ‘An’ Over Time"
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-3-analysis",
+    "href": "Final_Presentation.html#visualization-3-analysis",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 3 Analysis",
+    "text": "Visualization 3 Analysis\n\nBetween 2008-2014 the proportion of titles beginning with ‘A’/‘An’ was extremely low. 2011 and 2013 are outlier years possibly explained by:\n\nLow total title counts\nCertain acquisitions that skewed overall\n\nThe proportion of titles beginning with these articles increased sharply from 2015 on\n\nThis growth may reflect a gaming of alphabetization in recommendation interfaces.\n\nThese proportions stabilize between 1.5-2.5% of all titles."
+  },
+  {
+    "objectID": "Final_Presentation.html#visualization-2---average-netflix-title-length-over-time",
+    "href": "Final_Presentation.html#visualization-2---average-netflix-title-length-over-time",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Visualization 2 - Average Netflix Title Length Over Time",
+    "text": "Visualization 2 - Average Netflix Title Length Over Time"
+  },
+  {
+    "objectID": "Final_Presentation.html#summarized-conclusions",
+    "href": "Final_Presentation.html#summarized-conclusions",
+    "title": "Presentation of Netflix Title Analysis",
+    "section": "Summarized Conclusions",
+    "text": "Summarized Conclusions\n\nNetflix’s title trends reflect strategic business choices:\n\nRapid content expansion\nTitle naming decisions\n\nThese patterns provide insight into how data can shift business models in the streaming industry\nAs the overall number of titles released on Netflix grew, the proportion of titles with ‘A’/‘An’ increased as well."
   }
 ]

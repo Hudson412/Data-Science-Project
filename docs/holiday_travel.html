@@ -730,8 +730,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(monthly_passengers, aes(x = Month)) +</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(aes(y = Domestic, color = "Domestic"), size = 3) +  # Domestic passengers (blue dots)</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(aes(y = International, color = "International"), size = 3) +  # International (red dots)</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(aes(y = Domestic, color = "Domestic"), size = 3, na.rm = TRUE) +  </span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(aes(y = International, color = "International"), size = 3, na.rm = TRUE) +  </span></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="in">  labs(title = "Monthly Domestic and International Air Passengers",</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="in">       x = "Month",</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="in">       y = "Passengers (in thousands)",</span></span>

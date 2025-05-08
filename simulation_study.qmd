@@ -83,7 +83,7 @@ data.frame(null_diffs) |>
     y = "Number of Relationships",
     title = "Sampling Distribution of Age Gap Differences when Null Hypothesis is True",
   ) 
-p_value <- mean(null_diffs >= observed_diff)
+p_value <- mean(abs(null_diffs) >= abs(observed_diff))
 ```
 
 I used a permutation test to simulate the null hypothesis by randomly shuffling the relationship type labels. The difference in mean age gaps was calculated for each permutation to generate a null distribution. The observed difference was then compared to this distribution to determine statistical significance.
