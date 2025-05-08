@@ -160,6 +160,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./traffic.html"> 
 <span class="menu-text">Traffic Stop Analysis</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Final Presentation"> 
+<span class="menu-text">Final_Presentation.qmd</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -299,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(null_diffs <span class="sc">&gt;=</span> observed_diff)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(null_diffs) <span class="sc">&gt;=</span> <span class="fu">abs</span>(observed_diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>I used a permutation test to simulate the null hypothesis by randomly shuffling the relationship type labels. The difference in mean age gaps was calculated for each permutation to generate a null distribution. The observed difference was then compared to this distribution to determine statistical significance.</p>
@@ -856,7 +860,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Relationships"</span>,</span>
 <span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sampling Distribution of Age Gap Differences when Null Hypothesis is True"</span>,</span>
 <span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(null_diffs <span class="sc">&gt;=</span> observed_diff)</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>p_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(null_diffs) <span class="sc">&gt;=</span> <span class="fu">abs</span>(observed_diff))</span>
 <span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>I used a permutation test to simulate the null hypothesis by randomly shuffling the relationship type labels. The difference in mean age gaps was calculated for each permutation to generate a null distribution. The observed difference was then compared to this distribution to determine statistical significance.</span>
